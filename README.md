@@ -35,7 +35,7 @@
     php artisan db:seed --class=PostSeeder   
 ***Warning***
 
-**you can't use PostSeeder before using UserSeeder if categories table is Empty**
+**you can't use PostSeeder before using UserSeeder if users table is Empty**
     
 
 ## Running
