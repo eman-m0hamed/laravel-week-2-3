@@ -8,7 +8,7 @@
   </head>
   <body>
 
-      <form action="/users/{{ $user->id }}/update" method="post" class="container">
+      <form action="{{ route('users.update', $user->id) }}" method="post" class="container">
         @csrf
         @method('put')
         <h1>edit user</h1>

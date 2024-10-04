@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $gaurded = [];
+    protected $guarded = [];
     // fillable
+
+    protected $perPage=10;
+    function user(){
+        return $this->belongsTo(User::class);
+
+    }
 }

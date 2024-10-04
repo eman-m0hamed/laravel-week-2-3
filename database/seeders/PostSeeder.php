@@ -15,6 +15,6 @@ class PostSeeder extends Seeder
     {
         //
 
-        Post::factory(6)->create();
+        Post::factory(50)->create();
     }
 }

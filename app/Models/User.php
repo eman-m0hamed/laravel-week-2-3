@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $table = 'myusers';
+    // protected $table = 'myusers';
     protected $fillable = [ // allowed columns
         'name',
         'email',
@@ -48,4 +48,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    function posts(){
+        return $this->hasMany(Post::class, 'user_id');
+    }
 }
+
+
+/**
+ * hasOne() => 
+ * hasMany()
+ *belongsTo()
+ *belongsToMany()
+ */
