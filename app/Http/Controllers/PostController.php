@@ -14,7 +14,13 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::paginate(15);
+        $posts = Post::with(['user'])->paginate(15); // ONE SQl Query
+        dd($posts);
+
+         /**
+          * posts => select * from posts where user_id in (select distinct(user_id) from posts) ;
+
+          */
 
         return view('posts.index', get_defined_vars());
     }

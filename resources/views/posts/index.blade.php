@@ -32,7 +32,7 @@
     </thead>
 
     <tbody>
-        @foreach($posts as $index=>$post)
+        @foreach($posts as $index=>$post) {{-- posts = 15 records --}}
             <tr @if($loop->even) style="background-color: gray;" @endif>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $post->id }}</td>

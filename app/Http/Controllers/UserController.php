@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,12 +36,21 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         //
         // $data = $request->except(['_token']);
         $data = $request->all();
 
+        $validData = $request->validate(
+            [
+                'name' =>['required', 'string', 'min:5'],
+                'email' =>['required', 'email', 'unique:users,email'],
+                'password' =>['required', 'min:4', 'max:10']
+            ]
+        );
+
+        $validData =  $request->validated();
         // $user = DB::table("users")->where('email', $data['email'])->first();
         $user = User::where('email', $data['email'])->first();
 
@@ -121,5 +132,15 @@ class UserController extends Controller
 
     function createOrder(){
 
+    }
+
+    function filter(Request $request){
+        // $inputSearch = $request['search'];
+        // $inputSearch = $request->input('search');
+        $inputSearch = $request->get('search');
+
+       $users= User::where('email', 'like', "%$inputSearch%")->
+        orWhere('phone', 'like', "%$inputSearch%")->
+        orWhere('name', 'like', "%$inputSearch%")->get();
     }
 }

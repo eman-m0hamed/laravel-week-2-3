@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
     ];
 
     // protected $guarded = []; // retricted columns
@@ -56,7 +57,7 @@ class User extends Authenticatable
 
 
 /**
- * hasOne() => 
+ * hasOne() =>
  * hasMany()
  *belongsTo()
  *belongsToMany()
